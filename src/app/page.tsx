@@ -1,65 +1,69 @@
-import Image from "next/image";
+import Hero from "../components/sections/Hero"
+import { InteractiveMenu } from "../components/sections/Interactive-menu";
+import { OurFavorites } from "../components/sections/our-favorites";
+import { OurMenu } from "../components/sections/our-menu";
+import PortfolioShowcase from "../components/sections/portfolio-showcase"
+import AboutSection from "../components/sections/about-section"
+import ShowcaseSection from "../components/sections/showcase-section";
+import { FeedbackCarousel } from "../components/sections/feedback-carousel";
+import AthensPizzaFooter from "../components/sections/Footer";
+
+const customerFeedback = [
+  {
+    id: 1,
+    name: "Rahul Sharma",
+    title: "Food Blogger",
+    quote: "The Multigrain Pizza here is a game changer! 0% Maida but 100% crispy and delicious. Best pizza in town hands down.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800",
+    avatar: "https://i.pravatar.cc/150?u=1"
+  },
+  {
+    id: 2,
+    name: "Priya Singh",
+    title: "Regular Customer",
+    quote: "We ordered the heart-shaped pizza for our anniversary and it was perfect. The Tandoori Pasta is also highly recommended!",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=800",
+    avatar: "https://i.pravatar.cc/150?u=2"
+  },
+  {
+    id: 3,
+    name: "Amit Patel",
+    title: "Local Guide",
+    quote: "Great ambiance and amazing food. You can really taste the 10+ years of experience in every bite of their signature pizzas.",
+    rating: 4,
+    image: "https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=800",
+    avatar: "https://i.pravatar.cc/150?u=3"
+  },
+  {
+    id: 4,
+    name: "Neha Gupta",
+    title: "Pizza Enthusiast",
+    quote: "Absolutely love the crust! The ingredients feel so fresh and the service is incredibly fast and friendly.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=800",
+    avatar: "https://i.pravatar.cc/150?u=4"
+  }
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="min-h-screen bg-brand-snow">
+      <Hero />
+      <PortfolioShowcase />
+     <InteractiveMenu />
+     <OurFavorites />
+     <OurMenu />
+     <AboutSection />
+     <ShowcaseSection />
+     <FeedbackCarousel 
+     testimonials={customerFeedback} 
+        title="5-Star Ratings on Google"
+        subtitle="See why our customers keep coming back for more."
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        <AthensPizzaFooter />
+      {/* Add other sections like Menu or Testimonials here */}
+    </main>
   );
 }

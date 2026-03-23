@@ -4,6 +4,15 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  /* This adds your Aethnes Pizza colors to Tailwind */
+  --color-brand-navy: #1e3a8a;   /* Deep Blue from logo [cite: 2] */
+  --color-brand-snow: #f8fafc;   /* Clean background */
+  --color-brand-sauce: #dc2626;  /* Pizza red for CTAs */
+
+  /* Keep your existing shadcn variables below this */
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
