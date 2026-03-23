@@ -1,209 +1,83 @@
-'use client';
-
-import { useEffect, useRef, useState } from 'react';
+import { CheckCircle2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function AboutSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section
-      ref={sectionRef}
-      className="w-full py-20 bg-gradient-to-b from-orange-50 to-white"
-    >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div
-            className={`transform transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 text-balance">
+    <section className="py-16 md:py-24 bg-brand-snow overflow-hidden">
+      {/* Rule 3: Consistent Width Container */}
+      <div className="max-w-7xl mx-auto w-full px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          
+          {/* Left Side: Content */}
+          <div className="order-2 lg:order-1 flex flex-col justify-center">
+            <span className="text-brand-sauce font-bold tracking-widest uppercase text-sm mb-4 block">
               Our Story
+            </span>
+            <h2 className="text-4xl md:text-5xl font-serif font-medium text-brand-navy mb-6 leading-tight">
+              Crafting authentic pizzas and memories for over a decade.
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-red-600 to-orange-500 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From a small family recipe to Athens' most beloved pizzeria
+            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              Athens Pizza has been serving high-quality, authentic pizza across 4+ cities. Our focus on fresh ingredients, innovative recipes, and a customer-centric approach has earned us a loyal following of flavor lovers.
             </p>
-          </div>
-        </div>
 
-        {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Left Column - Text */}
-          <div
-            className={`transform transition-all duration-1000 delay-200 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-            }`}
-          >
-            <h3 className="text-3xl font-bold text-gray-900 mb-6">
-              How It All Started
-            </h3>
-            <div className="space-y-4 text-gray-700 leading-relaxed">
-              <p>
-                In 1995, with nothing but a passion for authentic Italian cuisine and a cherished family recipe passed down through generations, our founder opened the doors to Athens Pizza. What began as a humble pizzeria with just three tables has grown into a cornerstone of the Athens community.
-              </p>
-              <p>
-                Every pizza that leaves our kitchen carries the same dedication to quality and tradition that inspired our journey. We source the finest imported flour from Italy, use only fresh toppings delivered daily, and slow-ferment our dough for 48 hours to achieve that perfect crust.
-              </p>
-              <p>
-                Today, we're proud to serve thousands of families who have made us part of their traditions—whether it's a birthday celebration, a casual dinner, or just a late-night craving for authentic pizza.
-              </p>
-            </div>
-          </div>
-
-          {/* Right Column - Image */}
-          <div
-            className={`transform transition-all duration-1000 delay-400 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-            }`}
-          >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-red-600 to-orange-400 rounded-lg blur-xl opacity-20"></div>
-              <img
-                src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&h=500&fit=crop"
-                alt="Pizza being prepared"
-                className="relative w-full h-auto rounded-lg shadow-2xl hover:shadow-3xl transition-shadow duration-500"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Values Section */}
-        <div className="mb-16">
-          <h3
-            className={`text-3xl font-bold text-center text-gray-900 mb-12 transform transition-all duration-1000 delay-300 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            What We Stand For
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Authentic Quality',
-                description:
-                  'We never compromise on ingredients. Every component of our pizzas is selected for taste, freshness, and authenticity.',
-                icon: '🍅',
-                delay: 400,
-              },
-              {
-                title: 'Family Values',
-                description:
-                  'We treat every customer like family. Your satisfaction and experience are at the heart of everything we do.',
-                icon: '❤️',
-                delay: 500,
-              },
-              {
-                title: 'Tradition & Innovation',
-                description:
-                  'While we honor our classic recipes, we constantly innovate to bring exciting new flavors to our menu.',
-                icon: '✨',
-                delay: 600,
-              },
-            ].map((value, index) => (
-              <div
-                key={index}
-                className={`transform transition-all duration-1000 ${
-                  isVisible
-                    ? 'opacity-100 translate-y-0'
-                    : 'opacity-0 translate-y-10'
-                }`}
-                style={{ transitionDelay: `${value.delay}ms` }}
-              >
-                <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-500 h-full">
-                  <div className="text-5xl mb-4">{value.icon}</div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-3">
-                    {value.title}
-                  </h4>
-                  <p className="text-gray-600 leading-relaxed">
-                    {value.description}
-                  </p>
+            {/* Bullet Points */}
+            <div className="space-y-6 mb-10">
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-brand-sauce flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-bold text-brand-navy text-lg">High-Quality Ingredients</h4>
+                  <p className="text-gray-600 text-sm mt-1">Only the finest, freshest ingredients go into creating our best-tasting dishes.</p>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
+              
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-brand-sauce flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-bold text-brand-navy text-lg">0% Maida Options</h4>
+                  <p className="text-gray-600 text-sm mt-1">Wholesome multigrain crusts made with wheat, chickpea, and flaxseed.</p>
+                </div>
+              </div>
 
-        {/* Bottom CTA */}
-        <div
-          className={`text-center transform transition-all duration-1000 delay-500 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <p className="text-lg text-gray-700 mb-8">
-            Ready to experience the Athens Pizza difference?
-          </p>
-          <button className="bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-700 hover:to-orange-600 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
-            Reserve Your Table
-          </button>
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-brand-sauce flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-bold text-brand-navy text-lg">Warm & Inviting Atmosphere</h4>
+                  <p className="text-gray-600 text-sm mt-1">Our locations are designed to provide a welcoming environment to relax and make memories.</p>
+                </div>
+              </div>
+            </div>
+
+            <Button 
+              className="w-fit bg-brand-navy text-white hover:bg-brand-navy/90 rounded-full px-8 py-6 text-lg font-medium transition-transform hover:scale-105 shadow-lg"
+            >
+              Learn More About Us
+            </Button>
+          </div>
+
+          {/* Right Side: Images & Floating Badge */}
+          <div className="order-1 lg:order-2 relative h-[400px] sm:h-[500px] lg:h-[650px] rounded-3xl overflow-hidden shadow-2xl border border-black/5 group">
+            <img 
+              src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=1000" 
+              alt="Fresh Pizza Preparation" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            {/* Dark gradient overlay so the floating box pops */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-brand-navy/60 via-transparent to-transparent" />
+            
+            {/* Floating Stats Card (Replaces the "15+ Years" from the screenshot) */}
+            <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 bg-white p-5 md:p-6 rounded-2xl shadow-xl flex items-center gap-4 border border-gray-100 max-w-[260px] transform transition-transform hover:-translate-y-2">
+              <div className="flex items-center justify-center w-14 h-14 bg-brand-sauce/10 text-brand-sauce rounded-full flex-shrink-0">
+                <span className="text-2xl">🍕</span>
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-brand-navy">10+ Years</p>
+                <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mt-0.5">Experience</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes slideInLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        @keyframes slideInRight {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        @keyframes scaleIn {
-          from {
-            opacity: 0;
-            transform: scale(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-      `}</style>
     </section>
   );
 }

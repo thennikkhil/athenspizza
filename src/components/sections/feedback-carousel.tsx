@@ -53,80 +53,78 @@ export function FeedbackCarousel({
   const visibleTestimonials = getVisibleTestimonials()
 
   return (
-    <section className="w-full py-16 px-4 bg-gray-50">
-      <div className="max-w-7xl mx-auto">
+    <section className="w-full py-16 md:py-24 bg-brand-snow border-t border-gray-200">
+      {/* Rule 3: Consistent Width */}
+      <div className="max-w-7xl mx-auto w-full px-6">
+        
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-balance">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-serif font-medium text-brand-navy mb-4">
             {title}
           </h2>
           {subtitle && (
-            <p className="text-xl text-gray-600">{subtitle}</p>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
           )}
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
           {visibleTestimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white rounded-2xl overflow-hidden shadow-sm border border-black/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
               {/* Image */}
-              <div className="h-48 overflow-hidden bg-gray-200">
+              <div className="h-48 overflow-hidden bg-gray-100 relative">
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
                   className="w-full h-full object-cover"
                 />
+                {/* Brand Sauce Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                {/* Avatar and Name */}
-                <div className="flex items-center gap-3 mb-4">
-                  <Avatar className="h-10 w-10">
-                    <AvatarImage
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                    />
-                    <AvatarFallback>
-                      {testimonial.name
-                        .split(' ')
-                        .map((n) => n[0])
-                        .join('')}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="font-semibold text-gray-900">
-                      {testimonial.name}
-                    </p>
-                    {testimonial.title && (
-                      <p className="text-sm text-gray-600">
-                        {testimonial.title}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                {/* Quote */}
-                <p className="text-gray-700 mb-4 line-clamp-3">
-                  {testimonial.quote}
-                </p>
+              <div className="p-6 md:p-8 relative">
+                {/* Floating Avatar */}
+                <Avatar className="h-16 w-16 absolute -top-8 right-6 border-4 border-white shadow-md">
+                  <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                  <AvatarFallback className="bg-brand-navy text-white font-bold">
+                    {testimonial.name.split(' ').map((n) => n[0]).join('')}
+                  </AvatarFallback>
+                </Avatar>
 
                 {/* Rating */}
-                <div className="flex gap-1">
+                <div className="flex gap-1 mb-4">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star
                       key={i}
                       size={16}
                       className={
                         i < testimonial.rating
-                          ? 'fill-yellow-400 text-yellow-400'
-                          : 'text-gray-300'
+                          ? 'fill-brand-sauce text-brand-sauce' // Replaced generic yellow with brand-sauce
+                          : 'text-gray-200'
                       }
                     />
                   ))}
+                </div>
+
+                {/* Quote */}
+                <p className="text-gray-600 mb-6 italic leading-relaxed min-h-[80px]">
+                  "{testimonial.quote}"
+                </p>
+
+                {/* Name */}
+                <div>
+                  <p className="font-bold text-brand-navy text-lg">
+                    {testimonial.name}
+                  </p>
+                  {testimonial.title && (
+                    <p className="text-sm font-medium text-brand-sauce uppercase tracking-widest mt-1">
+                      {testimonial.title}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
@@ -134,14 +132,14 @@ export function FeedbackCarousel({
         </div>
 
         {/* Navigation */}
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-6">
           <Button
             variant="outline"
             size="icon"
             onClick={goToPrevious}
-            className="rounded-full"
+            className="rounded-full h-12 w-12 border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-6 w-6" />
           </Button>
 
           {/* Indicator Bar */}
@@ -149,9 +147,9 @@ export function FeedbackCarousel({
             {testimonials.map((_, index) => (
               <div
                 key={index}
-                className={`h-1 transition-all ${
+                className={`h-1.5 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? 'bg-blue-500 w-8'
+                    ? 'bg-brand-sauce w-8' // Replaced blue with brand-sauce
                     : 'bg-gray-300 w-2'
                 }`}
               />
@@ -162,9 +160,9 @@ export function FeedbackCarousel({
             variant="outline"
             size="icon"
             onClick={goToNext}
-            className="rounded-full"
+            className="rounded-full h-12 w-12 border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-6 w-6" />
           </Button>
         </div>
       </div>

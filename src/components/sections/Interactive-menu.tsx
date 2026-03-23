@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { VideoCard } from "../ui/video-card"
 
-// Reduced to exactly 4 items for Aethnes Pizza
 const menuItems = [
   {
     id: 1,
@@ -43,14 +42,22 @@ export function InteractiveMenu() {
   const [hoveredId, setHoveredId] = useState<number | null>(null)
 
   return (
-    <section className="bg-brand-snow py-24">
-      <div className="container mx-auto px-6 max-w-7xl">
-        <h2 className="mb-12 text-4xl font-serif font-medium text-brand-navy md:text-5xl text-center">
-          Experience The Menu
-        </h2>
+    <section className="bg-brand-snow py-16 md:py-24 border-b border-gray-200">
+      <div className="mx-auto max-w-7xl w-full px-6">
         
-        {/* The expanding flex container */}
-        <div className="flex gap-4 items-stretch h-[600px]">
+        {/* Improved Heading with Brand Accents */}
+        <div className="flex flex-col items-center justify-center mb-10 text-center">
+          <h2 className="text-4xl md:text-5xl font-serif font-medium text-brand-navy mb-4">
+            Experience The Menu
+          </h2>
+          <div className="w-24 h-1.5 bg-brand-sauce rounded-full mb-4"></div>
+          <p className="text-gray-600 max-w-2xl text-lg">
+            Hover to explore our signature categories in action.
+          </p>
+        </div>
+        
+        {/* Adjusted Height: Stacks to 500px on mobile, wide 450px on desktop */}
+        <div className="flex flex-col md:flex-row gap-3 md:gap-4 items-stretch h-[500px] md:h-[450px]">
           {menuItems.map((item) => (
             <VideoCard
               key={item.id}
@@ -60,6 +67,7 @@ export function InteractiveMenu() {
             />
           ))}
         </div>
+
       </div>
     </section>
   )

@@ -17,34 +17,34 @@ const favorites: FavoriteItem[] = [
   {
     id: 1,
     label: 'Signature',
-    name: 'Trio Cheese',
-    description: 'Smoked mozzarella, arugula tossed in oil, with roasted pumpkin seeds',
-    price: 18.5,
-    image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&h=300&fit=crop',
+    name: 'Unique-Shaped Pizzas',
+    description: 'Fun and creative heart-shaped and square pizzas that delight everyone.',
+    price: 350,
+    image: 'https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=800',
   },
   {
     id: 2,
-    label: "Chef's Choice",
-    name: 'Supreme Pizza',
-    description: "Flavorful pepperoni, italian sausage, bell pepper, and crispy bacon trio sides",
-    price: 22.0,
-    image: 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=400&h=300&fit=crop',
+    label: "0% Maida",
+    name: 'Multigrain Pizza',
+    description: "A wholesome blend of Wheat, Chickpea, and Flaxseed for a healthy crispy crust.",
+    price: 420,
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800',
   },
   {
     id: 3,
     label: 'Specialty',
-    name: 'Margherita D.O.P',
-    description: 'San Marzano tomatoes, basil, mozzarella, and fresh olive oil with wood oven',
-    price: 15.0,
-    image: 'https://images.unsplash.com/photo-1579751626658-0e6d9f0c89c5?w=400&h=300&fit=crop',
+    name: 'Tandoori Pasta',
+    description: 'A fusion twist with bold, smoky tandoori flavors for a spicy kick.',
+    price: 280,
+    image: 'https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=800',
   },
   {
     id: 4,
-    label: 'Classic',
-    name: 'Double Pepper',
-    description: 'Double portion of spicy red peppers on a bed of mozzarella',
-    price: 19.5,
-    image: 'https://images.unsplash.com/photo-1571997477754-bc131143fbf9?w=400&h=300&fit=crop',
+    label: 'Refreshing',
+    name: 'Fresh Mint Mojito',
+    description: 'Muddled mint leaves, tangy lime, and soda served chilled.',
+    price: 150,
+    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=800',
   },
 ];
 
@@ -67,76 +67,79 @@ export function OurFavorites() {
   ];
 
   return (
-    <section className="py-12 px-4 md:px-8 lg:px-12">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-white py-16 md:py-24">
+      <div className="max-w-7xl mx-auto w-full px-6">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            <h2 className="text-4xl md:text-5xl font-serif font-medium text-brand-navy mb-4">
               Our Favorites
             </h2>
-            <div className="w-16 h-1 bg-red-600"></div>
+            <div className="w-24 h-1.5 bg-brand-sauce rounded-full"></div>
+            <p className="mt-4 text-gray-600 max-w-lg">
+              Discover the hand-crafted items that made us famous across our Cafe and Kiosk locations.
+            </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-3">
             <Button
               variant="outline"
               size="icon"
               onClick={handlePrevious}
-              className="h-10 w-10"
+              className="h-12 w-12 rounded-full border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white transition-colors"
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-6 w-6" />
             </Button>
             <Button
               variant="outline"
               size="icon"
               onClick={handleNext}
-              className="h-10 w-10"
+              className="h-12 w-12 rounded-full border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white transition-colors"
             >
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-6 w-6" />
             </Button>
           </div>
         </div>
 
         {/* Items Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {visibleItems.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+              className="bg-brand-snow rounded-2xl overflow-hidden shadow-sm border border-black/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
               {/* Image Container */}
-              <div className="relative h-40 overflow-hidden bg-gray-200">
+              <div className="relative h-56 overflow-hidden bg-gray-200">
                 <img
                   src={item.image}
                   alt={item.name}
                   className="w-full h-full object-cover"
                 />
                 {item.label && (
-                  <span className="absolute top-2 left-2 bg-gray-800 text-white text-xs px-2 py-1 rounded">
+                  <span className="absolute top-4 left-4 bg-brand-navy text-white text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-md">
                     {item.label}
                   </span>
                 )}
               </div>
 
               {/* Content */}
-              <div className="p-4">
-                <h3 className="font-bold text-gray-900 text-lg mb-2">
+              <div className="p-6">
+                <h3 className="font-serif font-medium text-brand-navy text-xl mb-2">
                   {item.name}
                 </h3>
-                <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                <p className="text-gray-600 text-sm mb-6 min-h-[40px]">
                   {item.description}
                 </p>
 
                 {/* Price and Cart */}
-                <div className="flex items-center justify-between">
-                  <span className="text-red-600 font-bold text-lg">
-                    ${item.price.toFixed(2)}
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                  <span className="text-brand-sauce font-bold text-xl">
+                    ₹{item.price}
                   </span>
                   <Button
                     size="icon"
-                    className="h-8 w-8 bg-gray-200 hover:bg-gray-300 text-gray-700"
+                    className="h-10 w-10 bg-white border border-gray-200 hover:bg-brand-sauce hover:text-white hover:border-brand-sauce text-brand-navy rounded-full transition-colors"
                   >
-                    <ShoppingCart className="h-4 w-4" />
+                    <ShoppingCart className="h-5 w-5" />
                   </Button>
                 </div>
               </div>

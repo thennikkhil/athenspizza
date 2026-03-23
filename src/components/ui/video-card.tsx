@@ -35,24 +35,21 @@ export function VideoCard({ project, isHovered, onHoverChange }: VideoCardProps)
   return (
     <div
       className={cn(
-        "group relative rounded-[2.5rem] overflow-hidden",
+        "group relative rounded-[2rem] overflow-hidden",
         "transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)]",
-        "h-[600px] min-w-[180px]",
-        // Expanding logic: takes up more space when hovered
-        isHovered ? "flex-[2] shadow-2xl shadow-brand-navy/20" : "flex-[0.8] opacity-90",
+        "w-full md:w-auto md:min-w-[100px] lg:min-w-[140px]",
+        // Makes the hovered card significantly wider than the others
+        isHovered ? "flex-[3] shadow-2xl shadow-brand-navy/20" : "flex-[1] shadow-md",
       )}
       onMouseEnter={() => onHoverChange(true)}
       onMouseLeave={() => onHoverChange(false)}
     >
-      {/* Thumbnail Image */}
+      {/* Thumbnail Image - NO FILTERS, 100% Original Color! */}
       <div className={cn("absolute inset-0 transition-opacity duration-700", isHovered ? "opacity-0" : "opacity-100")}>
         <img
           src={project.thumbnail || "/placeholder.svg"}
           alt={project.title}
-          className={cn(
-            "w-full h-full object-cover transition-all duration-700",
-            !isHovered && "grayscale brightness-75",
-          )}
+          className="w-full h-full object-cover transition-all duration-700"
         />
       </div>
 
@@ -71,31 +68,39 @@ export function VideoCard({ project, isHovered, onHoverChange }: VideoCardProps)
         </video>
       </div>
 
+      {/* Permanent Dark Gradient at bottom for text readability only */}
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+
+      {/* Title when closed (Rotated on desktop, straight on mobile) */}
+      <div className={cn(
+        "absolute inset-0 flex items-center justify-center transition-opacity duration-500",
+        isHovered ? "opacity-0 pointer-events-none" : "opacity-100"
+      )}>
+        <h3 className="text-white font-serif text-xl tracking-widest drop-shadow-md md:-rotate-90 whitespace-nowrap">
+          {project.title}
+        </h3>
+      </div>
+
+      {/* Glassmorphic Info Card (Shows on Hover) */}
       <div
         className={cn(
-          "absolute bottom-0 left-0 right-0 p-8",
+          "absolute bottom-0 left-0 right-0 p-4 md:p-6",
           "transition-all duration-700",
-          isHovered ? "opacity-100" : "opacity-0 pointer-events-none",
+          isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none",
         )}
       >
-        {/* Glassmorphic card */}
-        <div
-          className={cn(
-            "relative backdrop-blur-xl bg-black/40 rounded-2xl p-6 border border-white/10",
-            "shadow-2xl",
-            "transition-all duration-700 ease-out",
-            isHovered ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
-          )}
-        >
+        <div className="relative backdrop-blur-md bg-white/20 rounded-xl p-4 md:p-5 border border-white/30 shadow-xl">
           <div className="space-y-1 text-left">
-            <h3 className="text-white font-mono text-sm tracking-[0.3em] uppercase font-medium leading-relaxed">
+            <h3 className="text-white font-serif text-lg md:text-xl font-medium tracking-wide drop-shadow-sm">
               {project.title}
             </h3>
-            <p className="text-white/80 font-mono text-xs tracking-[0.25em] uppercase leading-relaxed">
+            <p className="text-white/90 font-sans text-xs font-bold tracking-widest uppercase drop-shadow-sm">
               {project.category}
             </p>
-            <div className="pt-3 mt-3 border-t border-white/10">
-              <p className="text-brand-sauce font-mono text-xs tracking-widest">{project.year}</p>
+            <div className="pt-2 mt-2 border-t border-white/30">
+              <p className="text-brand-sauce font-sans font-bold text-xs tracking-widest uppercase cursor-pointer hover:text-white transition-colors w-fit drop-shadow-sm">
+                {project.year} &rarr;
+              </p>
             </div>
           </div>
         </div>
