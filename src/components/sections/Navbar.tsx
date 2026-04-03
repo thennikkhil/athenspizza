@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
+
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -117,27 +119,37 @@ function MobileMenu({
   navLinks: { label: string; href: string }[];
   pathname: string;
 }) {
-  return (
-    <div className="md:hidden">
-      {/* Simple mobile — just show links stacked via a details/summary for zero-JS toggle */}
-      <details className="relative">
-        <summary
-          className="list-none cursor-pointer w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-gray-100 transition-colors"
-          aria-label="Open menu"
-        >
-          <span className="block w-5 h-0.5 rounded-full" style={{ background: '#1e3a8a' }} />
-          <span className="block w-5 h-0.5 rounded-full" style={{ background: '#1e3a8a' }} />
-          <span className="block w-4 h-0.5 rounded-full" style={{ background: '#1e3a8a' }} />
-        </summary>
+  const [isOpen, setIsOpen] = useState(false);
 
+  // Close menu whenever the route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  return (
+    <div className="md:hidden relative">
+      {/* Hamburger button */}
+      <button
+        onClick={() => setIsOpen(prev => !prev)}
+        className="w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+        aria-label="Open menu"
+      >
+        <span className="block w-5 h-0.5 rounded-full" style={{ background: '#1e3a8a' }} />
+        <span className="block w-5 h-0.5 rounded-full" style={{ background: '#1e3a8a' }} />
+        <span className="block w-4 h-0.5 rounded-full" style={{ background: '#1e3a8a' }} />
+      </button>
+
+      {/* Dropdown */}
+      {isOpen && (
         <div
-          className="absolute right-0 top-12 w-48 rounded-xl border border-gray-100 shadow-xl overflow-hidden"
+          className="absolute right-0 top-12 w-48 rounded-xl border border-gray-100 shadow-xl overflow-hidden z-50"
           style={{ background: '#f8fafc' }}
         >
           {navLinks.map(link => (
             <Link
               key={link.href}
               href={link.href}
+              onClick={() => setIsOpen(false)}
               className="block px-5 py-3 text-sm font-semibold border-b border-gray-100 last:border-0 transition-colors"
               style={{
                 fontFamily: "'Titan One', cursive",
@@ -152,13 +164,14 @@ function MobileMenu({
             href="https://wa.me/919876543210"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
             className="block px-5 py-3 text-sm font-bold text-white text-center"
             style={{ background: '#dc2626', fontFamily: "'Titan One', cursive" }}
           >
             Order Now
           </a>
         </div>
-      </details>
+      )}
     </div>
   );
 }
