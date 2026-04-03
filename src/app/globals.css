@@ -1,8 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Chewy&family=Permanent+Marker&family=Titan+One&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
+
+h1, h2, h3, .brand-font {
+  font-family: 'Titan One', cursive;
+  letter-spacing: 1px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
 
 @theme {
   /* This adds your Aethnes Pizza colors to Tailwind */

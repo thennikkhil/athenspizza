@@ -18,7 +18,7 @@ export default function AthensPizzaFooter() {
               Delivering authentic, handcrafted pizzas and more, with a commitment to quality and customer satisfaction for over 10 years.
             </p>
             <div className="flex gap-4">
-              <Link href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-sauce transition-colors">
+              <Link href="https://www.instagram.com/athenspizzaofficial" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-sauce transition-colors">
                 <Instagram size={18} />
               </Link>
               <Link href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-sauce transition-colors">
@@ -34,10 +34,10 @@ export default function AthensPizzaFooter() {
           <div>
             <h4 className="text-white font-bold tracking-widest uppercase mb-6 text-sm">Quick Links</h4>
             <ul className="space-y-4">
-              <li><Link href="#" className="text-white/70 hover:text-brand-sauce transition-colors text-sm">Our Full Menu</Link></li>
-              <li><Link href="#" className="text-white/70 hover:text-brand-sauce transition-colors text-sm">Franchise Opportunities</Link></li>
-              <li><Link href="#" className="text-white/70 hover:text-brand-sauce transition-colors text-sm">About Athens Pizza</Link></li>
-              <li><Link href="#" className="text-white/70 hover:text-brand-sauce transition-colors text-sm">Catering & Events</Link></li>
+              <li><Link href="/menu" className="text-white/70 hover:text-brand-sauce transition-colors text-sm">Our Full Menu</Link></li>
+              <li><Link href="/franchise" className="text-white/70 hover:text-brand-sauce transition-colors text-sm">Franchise Opportunities</Link></li>
+              <li><Link href="/#about" className="text-white/70 hover:text-brand-sauce transition-colors text-sm">About Athens Pizza</Link></li>
+              <li><Link href="/#experience" className="text-white/70 hover:text-brand-sauce transition-colors text-sm">Experience At Athens Pizza</Link></li>
             </ul>
           </div>
 
@@ -86,10 +86,7 @@ export default function AthensPizzaFooter() {
           <p className="text-white/50 text-sm">
             © {new Date().getFullYear()} Athens Pizza. All rights reserved.
           </p>
-          <div className="flex gap-6 text-sm">
-            <Link href="#" className="text-white/50 hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="text-white/50 hover:text-white transition-colors">Terms of Service</Link>
-          </div>
+          
         </div>
       </div>
     </footer>

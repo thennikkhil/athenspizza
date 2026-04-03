@@ -6,25 +6,25 @@ const MENU_SHOWCASE = [
   { 
     id: 1, 
     label: "Signature Pizzas", 
-    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800",
-    tag: "0% Maida" 
+    image: "https://res.cloudinary.com/nikk25/image/upload/v1775224965/full-menu/pizzas/veg-supereme-pizza_s68hwf.png",
+    tag: "0% Maida",
   },
   { 
     id: 2, 
     label: "Unique Shapes", 
-    image: "https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=800",
+    image: "https://res.cloudinary.com/nikk25/image/upload/v1775225592/our-menu/Heart_Pizza_tujwcz.jpg",
     tag: "Fan Favorite" 
   },
   { 
     id: 3, 
     label: "Italian Pastas", 
-    image: "https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=800",
+    image: "https://res.cloudinary.com/nikk25/image/upload/v1775225016/full-menu/pasta/red-sauce-pasta_rxs99l.png",
     tag: "Red & White Sauce" 
   },
   { 
     id: 4, 
     label: "Mojitos & Shakes", 
-    image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=800",
+    image: "https://res.cloudinary.com/nikk25/image/upload/v1775225076/full-menu/shakes/cool-blue-mojito_qrkq6u.png",
     tag: "Beverages" 
   },
 ];

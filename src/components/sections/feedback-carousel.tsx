@@ -1,9 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 
 interface Testimonial {
   id: number
@@ -12,7 +11,6 @@ interface Testimonial {
   quote: string
   rating: number
   image: string
-  avatar: string
 }
 
 interface FeedbackCarouselProps {
@@ -40,104 +38,93 @@ export function FeedbackCarousel({
     )
   }
 
-  const getVisibleTestimonials = () => {
-    const visibleCount = 3
-    const result = []
-    for (let i = 0; i < visibleCount; i++) {
-      const index = (currentIndex + i) % testimonials.length
-      result.push(testimonials[index])
-    }
-    return result
-  }
+  // Get only the active testimonial
+  const activeTestimonial = testimonials[currentIndex];
 
-  const visibleTestimonials = getVisibleTestimonials()
+  if (!activeTestimonial) return null;
 
   return (
-    <section className="w-full py-16 md:py-24 bg-brand-snow border-t border-gray-200">
-      {/* Rule 3: Consistent Width */}
-      <div className="max-w-7xl mx-auto w-full px-6">
+    <section className="w-full py-16 md:py-24 bg-brand-navy overflow-hidden">
+      <div className="max-w-5xl mx-auto w-full px-6">
         
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-medium text-brand-navy mb-4">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-4xl md:text-5xl font-serif font-medium text-white mb-4">
             {title}
           </h2>
           {subtitle && (
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">{subtitle}</p>
           )}
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
-          {visibleTestimonials.map((testimonial) => (
-            <div
-              key={testimonial.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm border border-black/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-            >
-              {/* Image */}
-              <div className="h-48 overflow-hidden bg-gray-100 relative">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-full h-full object-cover"
-                />
-                {/* Brand Sauce Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+        {/* Single Testimonial Spotlight Card */}
+        <div className="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-[400px]">
+          
+          {/* Left Side: Featured Image */}
+          <div className="md:w-2/5 h-64 md:h-auto relative">
+            <img
+              src={activeTestimonial.image}
+              alt={activeTestimonial.name}
+              className="w-full h-full object-cover transition-opacity duration-500"
+              key={activeTestimonial.image} // Forces re-render animation
+            />
+            {/* Subtle gradient to blend into the white card on desktop */}
+            <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/40 via-transparent to-transparent md:to-white/20" />
+          </div>
+
+          {/* Right Side: Review Content */}
+          <div className="md:w-3/5 p-8 md:p-12 lg:p-16 flex flex-col justify-center relative">
+            <Quote className="absolute top-6 left-6 md:top-10 md:left-10 w-16 h-16 text-brand-snow opacity-50 pointer-events-none" />
+            
+            <div className="relative z-10">
+              {/* Rating */}
+              <div className="flex gap-1 mb-6">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    size={20}
+                    className={
+                      i < activeTestimonial.rating
+                        ? 'fill-brand-sauce text-brand-sauce'
+                        : 'text-gray-200'
+                    }
+                  />
+                ))}
               </div>
 
-              {/* Content */}
-              <div className="p-6 md:p-8 relative">
-                {/* Floating Avatar */}
-                <Avatar className="h-16 w-16 absolute -top-8 right-6 border-4 border-white shadow-md">
-                  <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                  <AvatarFallback className="bg-brand-navy text-white font-bold">
-                    {testimonial.name.split(' ').map((n) => n[0]).join('')}
-                  </AvatarFallback>
-                </Avatar>
+              {/* Quote */}
+              <p 
+                key={activeTestimonial.quote}
+                className="text-gray-700 text-lg md:text-xl italic leading-relaxed mb-8 min-h-[100px] animate-in fade-in slide-in-from-right-4 duration-500"
+              >
+                "{activeTestimonial.quote}"
+              </p>
 
-                {/* Rating */}
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      size={16}
-                      className={
-                        i < testimonial.rating
-                          ? 'fill-brand-sauce text-brand-sauce' // Replaced generic yellow with brand-sauce
-                          : 'text-gray-200'
-                      }
-                    />
-                  ))}
-                </div>
-
-                {/* Quote */}
-                <p className="text-gray-600 mb-6 italic leading-relaxed min-h-[80px]">
-                  "{testimonial.quote}"
-                </p>
-
-                {/* Name */}
-                <div>
-                  <p className="font-bold text-brand-navy text-lg">
-                    {testimonial.name}
-                  </p>
-                  {testimonial.title && (
-                    <p className="text-sm font-medium text-brand-sauce uppercase tracking-widest mt-1">
-                      {testimonial.title}
-                    </p>
-                  )}
-                </div>
-              </div>
+              {/* Customer Profile */}
+              {/* Customer Profile */}
+<div className="flex items-center gap-4">
+  <div>
+    <p className="font-bold text-brand-navy text-lg">
+      {activeTestimonial.name}
+    </p>
+    {activeTestimonial.title && (
+      <p className="text-sm font-bold text-brand-sauce uppercase tracking-widest mt-0.5">
+        {activeTestimonial.title}
+      </p>
+    )}
+  </div>
+</div>
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* Navigation */}
-        <div className="flex items-center justify-center gap-6">
+        {/* Navigation Controls */}
+        <div className="flex items-center justify-center gap-6 mt-12">
           <Button
             variant="outline"
             size="icon"
             onClick={goToPrevious}
-            className="rounded-full h-12 w-12 border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white"
+            className="rounded-full h-12 w-12 border-2 border-white/30 bg-transparent text-white hover:bg-white hover:text-brand-navy transition-colors"
           >
             <ChevronLeft className="h-6 w-6" />
           </Button>
@@ -145,13 +132,15 @@ export function FeedbackCarousel({
           {/* Indicator Bar */}
           <div className="flex gap-2">
             {testimonials.map((_, index) => (
-              <div
+              <button
                 key={index}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
+                onClick={() => setCurrentIndex(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? 'bg-brand-sauce w-8' // Replaced blue with brand-sauce
-                    : 'bg-gray-300 w-2'
+                    ? 'bg-brand-sauce w-8' 
+                    : 'bg-white/30 w-3 hover:bg-white/50'
                 }`}
+                aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
           </div>
@@ -160,11 +149,12 @@ export function FeedbackCarousel({
             variant="outline"
             size="icon"
             onClick={goToNext}
-            className="rounded-full h-12 w-12 border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white"
+            className="rounded-full h-12 w-12 border-2 border-white/30 bg-transparent text-white hover:bg-white hover:text-brand-navy transition-colors"
           >
             <ChevronRight className="h-6 w-6" />
           </Button>
         </div>
+
       </div>
     </section>
   )

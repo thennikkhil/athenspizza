@@ -20,7 +20,7 @@ const favorites: FavoriteItem[] = [
     name: 'Unique-Shaped Pizzas',
     description: 'Fun and creative heart-shaped and square pizzas that delight everyone.',
     price: 350,
-    image: 'https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=800',
+    image: 'https://res.cloudinary.com/nikk25/image/upload/v1775225592/our-menu/Heart_Pizza_tujwcz.jpg',
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const favorites: FavoriteItem[] = [
     name: 'Multigrain Pizza',
     description: "A wholesome blend of Wheat, Chickpea, and Flaxseed for a healthy crispy crust.",
     price: 420,
-    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800',
+    image: 'https://res.cloudinary.com/nikk25/image/upload/v1775224859/full-menu/pizzas/veg-paradise-pizz_n4xw9r.png',
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const favorites: FavoriteItem[] = [
     name: 'Tandoori Pasta',
     description: 'A fusion twist with bold, smoky tandoori flavors for a spicy kick.',
     price: 280,
-    image: 'https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=800',
+    image: 'https://res.cloudinary.com/nikk25/image/upload/v1775225027/full-menu/pasta/tandoori-paneer-pasta_wyam2n.png',
   },
   {
     id: 4,
@@ -44,7 +44,7 @@ const favorites: FavoriteItem[] = [
     name: 'Fresh Mint Mojito',
     description: 'Muddled mint leaves, tangy lime, and soda served chilled.',
     price: 150,
-    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=800',
+    image: 'https://res.cloudinary.com/nikk25/image/upload/v1775225076/full-menu/shakes/cool-blue-mojito_qrkq6u.png',
   },
 ];
 
@@ -130,18 +130,13 @@ export function OurFavorites() {
                   {item.description}
                 </p>
 
-                {/* Price and Cart */}
+                {/* Price and Cart
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                   <span className="text-brand-sauce font-bold text-xl">
                     ₹{item.price}
                   </span>
-                  <Button
-                    size="icon"
-                    className="h-10 w-10 bg-white border border-gray-200 hover:bg-brand-sauce hover:text-white hover:border-brand-sauce text-brand-navy rounded-full transition-colors"
-                  >
-                    <ShoppingCart className="h-5 w-5" />
-                  </Button>
-                </div>
+
+                </div> */}
               </div>
             </div>
           ))}

@@ -7,43 +7,44 @@ import AboutSection from "../components/sections/about-section"
 import ShowcaseSection from "../components/sections/showcase-section";
 import { FeedbackCarousel } from "../components/sections/feedback-carousel";
 import AthensPizzaFooter from "../components/sections/Footer";
+import Navbar from "../components/sections/Navbar"; 
 
 const customerFeedback = [
   {
     id: 1,
     name: "Rahul Sharma",
-    title: "Food Blogger",
-    quote: "The Multigrain Pizza here is a game changer! 0% Maida but 100% crispy and delicious. Best pizza in town hands down.",
+    title: "PDM University Student",
+    category: "Pizza",
+    quote: "Finally a place in Bahadurgarh that gets the crust right! The Multigrain Pizza is a lifesaver for when I want to eat healthy without giving up pizza. The 0% Maida base is actually crispy and delicious.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800",
-    avatar: "https://i.pravatar.cc/150?u=1"
+    image: "https://res.cloudinary.com/nikk25/image/upload/v1775225596/our-menu/paneer_eyxb0g.webp"
   },
   {
     id: 2,
-    name: "Priya Singh",
-    title: "Regular Customer",
-    quote: "We ordered the heart-shaped pizza for our anniversary and it was perfect. The Tandoori Pasta is also highly recommended!",
+    name: "Anjali Verma",
+    title: "Local Food Blogger",
+    category: "Shakes",
+    quote: "If you haven't tried their Premium Chocolate Shake, you're missing out. It's thick, rich, and way better than the watery shakes you get elsewhere. Perfect refreshment for the Haryanvi summer!",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=800",
-    avatar: "https://i.pravatar.cc/150?u=2"
+    image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=800"
   },
   {
     id: 3,
-    name: "Amit Patel",
-    title: "Local Guide",
-    quote: "Great ambiance and amazing food. You can really taste the 10+ years of experience in every bite of their signature pizzas.",
-    rating: 4,
-    image: "https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=800",
-    avatar: "https://i.pravatar.cc/150?u=3"
+    name: "Vikram Singh",
+    title: "Sector 6 Resident",
+    category: "Pasta",
+    quote: "The Tandoori Sauce Pasta is the perfect fusion. It has that smoky Indian kick but stays true to the creamy Italian texture. My kids won't go anywhere else for their weekend pasta treat now.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=800"
   },
   {
     id: 4,
-    name: "Neha Gupta",
-    title: "Pizza Enthusiast",
-    quote: "Absolutely love the crust! The ingredients feel so fresh and the service is incredibly fast and friendly.",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=800",
-    avatar: "https://i.pravatar.cc/150?u=4"
+    name: "Sonia Gupta",
+    title: "Regular Customer",
+    category: "Snacks",
+    quote: "Their Cheese Garlic Bread is elite. Most places just give you dry bread, but here it’s loaded with herbs and real mozzarella. It's my go-to evening snack every time I pass by the shop.",
+    rating: 4,
+    image: "https://res.cloudinary.com/nikk25/image/upload/v1775225599/our-menu/feeback-garlic-bread_kdobp4.jpg"
   }
 ];
 
@@ -62,7 +63,6 @@ export default function Home() {
         title="5-Star Ratings on Google"
         subtitle="See why our customers keep coming back for more."
         />
-        <AthensPizzaFooter />
       {/* Add other sections like Menu or Testimonials here */}
     </main>
   );

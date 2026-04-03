@@ -1,10 +1,11 @@
 'use client'
 
 import { ArrowRight, Play } from 'lucide-react'
+import Link from 'next/link'
 
 export default function ShowcaseSection() {
   return (
-    <section className="w-full px-6 py-16 md:py-24 bg-white border-t border-gray-200">
+    <section className="w-full px-6 py-16 md:py-24 bg-white border-t border-gray-200" id="experience">
       <div className="max-w-7xl mx-auto w-full">
         {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-16">
@@ -32,10 +33,10 @@ export default function ShowcaseSection() {
               <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                 We ensure that every customer enjoys a memorable experience every time they visit.
               </p>
-              <div className="flex items-center gap-2 text-brand-sauce font-bold text-sm tracking-widest uppercase group-hover:text-brand-navy transition-colors">
+              {/* <div className="flex items-center gap-2 text-brand-sauce font-bold text-sm tracking-widest uppercase group-hover:text-brand-navy transition-colors">
                 Learn More
                 <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-              </div>
+              </div> */}
             </div>
 
             {/* Card 2 */}
@@ -46,10 +47,10 @@ export default function ShowcaseSection() {
               <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                 Our locations are designed to provide a warm environment to relax and make memories.
               </p>
-              <div className="flex items-center gap-2 text-brand-sauce font-bold text-sm tracking-widest uppercase group-hover:text-brand-navy transition-colors">
+              {/* <div className="flex items-center gap-2 text-brand-sauce font-bold text-sm tracking-widest uppercase group-hover:text-brand-navy transition-colors">
                 Visit Us
                 <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-              </div>
+              </div> */}
             </div>
 
             {/* Card 3 */}
@@ -60,35 +61,45 @@ export default function ShowcaseSection() {
               <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                 Consistent positive reviews and a loyal customer base across multiple cities.
               </p>
-              <div className="flex items-center gap-2 text-brand-sauce font-bold text-sm tracking-widest uppercase group-hover:text-brand-navy transition-colors">
+              {/* <div className="flex items-center gap-2 text-brand-sauce font-bold text-sm tracking-widest uppercase group-hover:text-brand-navy transition-colors">
                 Our History
                 <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-              </div>
+              </div> */}
             </div>
           </div>
 
           {/* Right Column - Image Cards */}
           <div className="lg:col-span-2 space-y-6">
             {/* Large Image Card */}
-            <div className="group relative h-64 md:h-80 rounded-2xl overflow-hidden cursor-pointer shadow-md border border-black/5">
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/20 to-transparent z-10" />
-              <img
-                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1000"
-                alt="Cozy Cafe Interior"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-8">
-                <div className="bg-brand-sauce text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase w-fit mb-3 shadow-md">
-                  ⭐ Cafe Model
-                </div>
-                <h3 className="text-2xl md:text-3xl font-serif font-medium text-white mb-2">
-                  Dine-in with passion.
-                </h3>
-                <button className="absolute bottom-6 md:bottom-8 right-6 md:right-8 bg-white rounded-full p-3 transition-all duration-300 group-hover:bg-brand-sauce group-hover:text-white shadow-lg">
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
+<Link 
+  href="/franchise" 
+  className="group relative h-64 md:h-80 rounded-2xl overflow-hidden cursor-pointer shadow-md border border-black/5 block"
+>
+  {/* Gradient Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/20 to-transparent z-10" />
+  
+  {/* Background Image */}
+  <img
+    src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1000"
+    alt="Cozy Cafe Interior"
+    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+  />
+
+  {/* Content Overlay */}
+  <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-8">
+    <div className="bg-brand-sauce text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase w-fit mb-3 shadow-md">
+      ⭐ Cafe Model
+    </div>
+    <h3 className="text-2xl md:text-3xl font-serif font-medium text-white mb-2">
+      Dine-in with passion.
+    </h3>
+
+    {/* This was changed from a <button> to a <div> for valid HTML nesting */}
+    <div className="absolute bottom-6 md:bottom-8 right-6 md:right-8 bg-white rounded-full p-3 transition-all duration-300 group-hover:bg-brand-sauce group-hover:text-white shadow-lg">
+      <ArrowRight className="w-5 h-5" />
+    </div>
+  </div>
+</Link>
 
             {/* Two Small Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -168,9 +179,14 @@ export default function ShowcaseSection() {
             <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8">
               A strong brand, proven success, and full support to help you thrive. Whether you are interested in our <strong className="text-white">200 sq. ft. Kiosk Model</strong> or our <strong className="text-white">600 sq. ft. Cafe Model</strong>, we have an investment plan built for high profit potential.
             </p>
-            <button className="group/btn inline-flex items-center justify-center gap-3 bg-brand-sauce hover:bg-white hover:text-brand-sauce text-white px-8 py-4 rounded-full font-bold tracking-widest uppercase text-sm md:text-base transition-all duration-300 w-fit shadow-lg shadow-brand-sauce/20">
-              Franchise Details
-              <ArrowRight className="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform" />
+            <button className="h-auto group/btn inline-flex items-center justify-center gap-3 bg-brand-sauce hover:bg-white hover:text-brand-sauce text-white px-2 py-2 rounded-full font-bold tracking-w idest uppercase text-sm md:text-base transition-all duration-300 w-fit shadow-lg shadow-brand-sauce/20 cursor-pointer no-underline">
+            <Link
+  href="/franchise"
+  className="group/btn inline-flex items-center justify-center gap-3 bg-brand-sauce hover:bg-white hover:text-brand-sauce text-white px-8 py-4 rounded-full font-bold tracking-widest uppercase text-sm md:text-base transition-all duration-300 w-fit shadow-lg shadow-brand-sauce/20 no-underline"
+>
+  Franchise Details
+  <ArrowRight className="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform flex-shrink-0" />
+</Link>
             </button>
           </div>
         </div>
