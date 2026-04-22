@@ -8,7 +8,7 @@ import { FaInstagram } from "react-icons/fa";
 export default function FranchisePage() {
   const whatsappNumber = '919876543210'; // Replace with actual WhatsApp number
   const whatsappMessage = 'Hi! I am interested in the Athens Pizza Franchise opportunity.';
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+  const callLink = `tel:+919896584492`;
 
  return (
     <div className="min-h-screen bg-white font-sans">
@@ -25,10 +25,10 @@ export default function FranchisePage() {
             <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
               Build a thriving pizza business with 10+ years of proven success, authentic recipes, and complete support.
             </p>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+            <a href={callLink} target="_blank" rel="noopener noreferrer">
               <Button className="bg-[#ef4444] hover:bg-[#dc2626] text-white px-8 py-6 text-lg rounded-lg">
                 <MessageCircle className="w-5 h-5 mr-2" />
-                Contact Us on WhatsApp
+                Contact Us 
               </Button>
             </a>
           </div>
@@ -301,10 +301,10 @@ export default function FranchisePage() {
           <p className="text-lg text-blue-100 mb-8">
             Be part of a growing brand with a passion for quality, authentic pizzas, and customer satisfaction. Get in touch with us today!
           </p>
-          <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+          <a href={callLink} target="_blank" rel="noopener noreferrer">
             <Button className="bg-[#ef4444] hover:bg-[#dc2626] text-white px-10 py-6 text-lg rounded-lg">
               <MessageCircle className="w-5 h-5 mr-2" />
-              Contact Us on WhatsApp
+              Contact Us Now
             </Button>
           </a>
         </div>

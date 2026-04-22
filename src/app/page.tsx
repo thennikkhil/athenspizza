@@ -6,6 +6,7 @@ import PortfolioShowcase from "../components/sections/portfolio-showcase"
 import AboutSection from "../components/sections/about-section"
 import ShowcaseSection from "../components/sections/showcase-section";
 import { FeedbackCarousel } from "../components/sections/feedback-carousel";
+import LocationsSection from "../components/sections/Location-section";
 import AthensPizzaFooter from "../components/sections/Footer";
 import Navbar from "../components/sections/Navbar"; 
 
@@ -58,6 +59,7 @@ export default function Home() {
      <OurMenu />
      <AboutSection />
      <ShowcaseSection />
+     <LocationsSection />
      <FeedbackCarousel 
      testimonials={customerFeedback} 
         title="5-Star Ratings on Google"

@@ -24,7 +24,7 @@ export default function Hero() {
           Authentic Pizzas, <br />
           Built for <span className="inline-flex items-center gap-2 md:gap-4 italic text-brand-sauce">
             <span className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-full bg-white shadow-md text-2xl md:text-4xl not-italic">🍕</span>
-            Flavor Lovers.
+            Flavour Lovers
           </span>
         </h1>
 

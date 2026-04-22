@@ -149,17 +149,13 @@ export default function ShowcaseSection() {
         {/* Bottom Section - The Franchise Pitch */}
         <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-0 bg-brand-navy rounded-3xl overflow-hidden shadow-xl">
           {/* Video / Image Section */}
-          <div className="group relative h-64 lg:h-auto overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=1000"
+            <div className="group relative h-64 lg:h-full max-h-[90vh] overflow-hidden">
+            <img  
+              src="/images/franchise-detail.jpg"
               alt="Franchise Opportunity"
               className="w-full h-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-100"
             />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button className="bg-brand-sauce/90 backdrop-blur-sm rounded-full p-5 md:p-6 transition-transform duration-300 hover:scale-110 shadow-xl">
-                <Play className="w-8 h-8 md:w-10 md:h-10 text-white fill-white ml-1" />
-              </button>
-            </div>
+          
             {/* Tags */}
             <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-10 flex flex-wrap gap-2">
               <span className="bg-black/50 backdrop-blur-md text-white border border-white/20 text-[10px] md:text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full">

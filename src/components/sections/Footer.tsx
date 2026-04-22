@@ -47,15 +47,18 @@ export default function AthensPizzaFooter() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-brand-sauce flex-shrink-0 mt-0.5" />
-                <span className="text-white/70 text-sm">Proudly serving across 4+ Cities. Find your nearest Cafe or Kiosk!</span>
+                <span className="text-white/70 text-sm">Athens pizza (sector 6)
+Shop no. 81, Huda market, Sector 6, Bahadurgarh, HR (124507)</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-brand-sauce flex-shrink-0" />
-                <span className="text-white/70 text-sm">+91 98765 43210</span>
+                <span className="text-white/70 text-sm">+91 9896584492</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-brand-sauce flex-shrink-0" />
-                <span className="text-white/70 text-sm">hello@athenspizza.com</span>
+                <span className="text-white/70 text-sm">athenspizzaandcafe@gmail.com
+
+</span>
               </li>
             </ul>
           </div>
@@ -70,11 +73,11 @@ export default function AthensPizzaFooter() {
               </li>
               <li className="flex justify-between border-b border-white/10 pb-2">
                 <span>Saturday</span>
-                <span className="text-white font-medium">11:00 AM - 12:00 AM</span>
+                <span className="text-white font-medium">11:00 AM - 11:00 PM</span>
               </li>
               <li className="flex justify-between border-b border-white/10 pb-2">
                 <span>Sunday</span>
-                <span className="text-white font-medium">10:00 AM - 12:00 AM</span>
+                <span className="text-white font-medium">11:00 AM - 11:00 PM</span>
               </li>
             </ul>
           </div>
